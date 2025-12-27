@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AR HA Stream Tools Dashboard</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 20px;
+  }
+  h1 { color: #38bdf8; }
+  .card {
+    background: #020617;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #1e293b;
+  }
+  input, button {
+    padding: 8px;
+    margin-top: 6px;
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+  }
+  button {
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+  }
+  button.stop { background: #dc2626; }
+  button.secondary { background: #334155; }
+  pre {
+    background: #020617;
+    padding: 10px;
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+</style>
+</head>
+<body>
+
+<h1>🎥 YT Stream Tools</h1>
+
+<div class="card">
+  <button onclick="createJob()">➕ Create Job</button>
+  <p id="jobInfo"></p>
+</div>
+
+<div class="card">
+  <h3>Upload Video</h3>
+  <input type="file" id="videoFile" />
+  <button onclick="uploadVideo()">Upload</button>
+</div>
+
+<div class="card">
+  <h3>Set Stream URL</h3>
+  <input id="streamUrl" placeholder="rtmp://..." />
+  <button onclick="setStream()">Set Stream</button>
+</div>
+
+<div class="card">
+  <button onclick="startLive()">🔴 Start Live</button>
+  <button class="stop" onclick="stopLive()">🛑 Stop Live</button>
+</div>
+
+<div class="card">
+  <button class="secondary" onclick="checkStatus()">🔄 Refresh Status</button>
+  <pre id="statusBox">No status</pre>
+</div>
+
+<script>
+let jobId = null;
+
+async function createJob() {
+  const res = await fetch("/api/job", { method: "POST" });
+  const data = await res.json();
+  jobId = data.id;
+  document.getElementById("jobInfo").innerText = "JOB ID: " + jobId;
+}
+
+async function uploadVideo() {
+  if (!jobId) return alert("Create job dulu");
+  const file = document.getElementById("videoFile").files[0];
+  if (!file) return alert("Pilih video");
+  const fd = new FormData();
+  fd.append("video", file);
+  const res = await fetch(`/api/upload/${jobId}`, {
+    method: "POST",
+    body: fd
+  });
+  alert(await res.text());
+}
+
+async function setStream() {
+  if (!jobId) return alert("Create job dulu");
+  const url = document.getElementById("streamUrl").value;
+  const res = await fetch(`/api/stream/${jobId}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ streamUrl: url })
+  });
+  alert(await res.text());
+}
+
+async function startLive() {
+  if (!jobId) return alert("Create job dulu");
+  const res = await fetch(`/api/start/${jobId}`, { method: "POST" });
+  alert(await res.text());
+}
+
+async function stopLive() {
+  if (!jobId) return alert("Create job dulu");
+  const res = await fetch(`/api/stop/${jobId}`, { method: "POST" });
+  alert(await res.text());
+}
+
+async function checkStatus() {
+  if (!jobId) return;
+  const res = await fetch(`/api/status/${jobId}`);
+  document.getElementById("statusBox").innerText =
+    JSON.stringify(await res.json(), null, 2);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{"time":"2025-12-22T14:52:44.836Z","level":"INFO","message":"Job created","jobId":"1766415164835"}
+{"time":"2025-12-22T14:55:51.064Z","level":"INFO","message":"Video uploaded","jobId":"1766415164835","file":"1766415351022.mp4"}
+{"time":"2025-12-22T14:56:12.786Z","level":"INFO","message":"Job created","jobId":"1766415372786"}
+{"time":"2025-12-22T14:56:55.457Z","level":"INFO","message":"Video uploaded","jobId":"1766415372786","file":"1766415415264.mp4"}
+{"time":"2025-12-22T15:55:54.009Z","level":"INFO","message":"Stream URL set","jobId":"1766415372786"}
+{"time":"2025-12-22T15:56:22.317Z","level":"ERROR","message":"START FAILED","jobId":"1766415372786","error":"Video / Stream URL belum diset"}
+{"time":"2025-12-22T15:57:42.837Z","level":"INFO","message":"Job created","jobId":"1766419062836"}
+{"time":"2025-12-22T15:58:20.677Z","level":"INFO","message":"Video uploaded","jobId":"1766419062836","file":"1766419100631.mp4"}
+{"time":"2025-12-22T15:58:30.548Z","level":"INFO","message":"Stream URL set","jobId":"1766419062836"}
+{"time":"2025-12-22T15:58:43.913Z","level":"ERROR","message":"START FAILED","jobId":"1766419062836","error":"Video / Stream URL belum diset"}
+{"time":"2025-12-22T17:10:01.086Z","level":"INFO","message":"Job created","jobId":"1766423401086"}
+{"time":"2025-12-22T17:10:31.710Z","level":"INFO","message":"Video uploaded","jobId":"1766423401086","file":"1766423431671.mp4"}
+{"time":"2025-12-22T17:10:44.364Z","level":"INFO","message":"Stream URL set","jobId":"1766423401086"}
+{"time":"2025-12-22T17:11:04.301Z","level":"ERROR","message":"START FAILED","jobId":"1766423401086","error":"Video / Stream URL belum diset"}
+{"time":"2025-12-22T17:50:06.669Z","level":"INFO","message":"Job created","jobId":"1766425806669"}
+{"time":"2025-12-22T17:50:43.080Z","level":"INFO","message":"Video uploaded","jobId":"1766425806669","file":"1766425843026.mp4"}
+{"time":"2025-12-22T17:50:57.369Z","level":"INFO","message":"Stream URL set","jobId":"1766425806669"}
+{"time":"2025-12-23T10:55:36.212Z","level":"INFO","message":"Job created","jobId":"1766487336208"}
+{"time":"2025-12-23T10:56:29.060Z","level":"INFO","message":"Video set","jobId":"1766487336208","filename":"1766487389002.mp4"}
+{"time":"2025-12-23T10:57:46.403Z","level":"INFO","message":"Stream URL set","jobId":"1766487336208"}
+{"time":"2025-12-23T11:00:05.612Z","level":"INFO","message":"Starting FFmpeg","jobId":"1766487336208","videoPath":"C:\\yt-stream-tools\\videos\\1766487389002.mp4"}
+{"time":"2025-12-23T11:00:06.149Z","level":"INFO","message":"FFmpeg exited","jobId":"1766487336208","code":4294967294,"signal":null}
